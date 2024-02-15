@@ -1,0 +1,30 @@
+.tweetContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    color: white;
+    padding-top: 32px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid white;
+}
+
+.tweetContent {
+    font-size: 2em;
+}
+
+.infos {
+    display: flex;
+        align-items: center;
+        justify-content: space-between;
+}
+
+.date {
+    display: flex;
+    gap:16px; 
+}
+
+.icones {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}

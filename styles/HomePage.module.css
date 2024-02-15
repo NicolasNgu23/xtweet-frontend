@@ -1,0 +1,117 @@
+.page {
+    display: flex;
+    gap: 5px;
+}
+
+
+/* Container de droite */
+
+.containerLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100vh;
+    width: 25vw;
+    background-color: #151F2B;
+}
+
+.image {
+    height: 100px;
+    width: auto;
+    padding: 16px;
+}
+
+.profilContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.profilePic {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+    padding: 16px;
+    border-radius: 100%;
+}
+
+
+/* Container milieu */
+
+.containerMiddle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 50vw;
+    background-color: #151F2B;
+}
+
+.writeTweet {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 2rem;
+}
+
+.sendTweet {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+
+.tweetInput {
+    height: 80px;
+    border: 2px solid;
+    border-radius: 16px;
+    font-size: 2rem;
+    width: 40vw;
+    min-width: 125px;
+    margin-top: 16px;
+    border: none;
+    background-color: transparent;
+    border: solid 2px white;
+    color: white;
+}
+
+.tweetButton {
+    height: 80px;
+    border: 2px solid;
+    border-radius: 16px;
+    font-size: 2rem;
+    margin-top: 16px;
+    border: solid 2px white;
+    color: #151F2B;
+}
+
+.tweetButton:hover {
+    background-color: #151F2B;
+    color: white;
+    cursor: pointer;
+}
+
+.tweetsContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    padding: 50px;
+}
+
+/* Container droite  */
+
+.containerRight {
+    height: 100vh;
+    width: 25vw;
+    background-color: #151F2B;
+}
