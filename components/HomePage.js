@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
-import { useSelector } from "react-redux";
 const { topHashtags } = require('../modules/topHashtags')
 
 
@@ -108,20 +107,18 @@ export default function HomePageComponent() {
                     <div className={styles.nameContainer}>
 
                         <p> Welcome @{user.username}</p>
+                        <button className={styles.logoutbtn} onClick={handleLogout}>Logout</button>
+
                     </div>
-
-
                 </div>
 
                 <div className={styles.containerTrends}>
-                    <div className={styles.trendsTitle}>
-                        Trends
-                    </div>
                     <div className={styles.hashtagsContainer}>
+                        <span className={styles.trendsTitle}>Trends</span>
+
                         {hashtags}
                     </div>
                 </div>
-                        <button className={styles.logoutbtn} onClick={handleLogout}>logout</button>
             </div>
 
 
@@ -172,10 +169,8 @@ export default function HomePageComponent() {
                         </div>
                     }
 
-
-
-
                 </div>
+
                 <div className={styles.tweetsContainer}>
                 {/* {selectedTweets && selectedtweet} */}
                     {tweets}

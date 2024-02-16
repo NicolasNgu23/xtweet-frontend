@@ -74,24 +74,13 @@ export default function Tweet(props) {
                         </div>
                         {user.username === props.user.username ? <FontAwesomeIcon icon={faTrash} onClick={() => handleClick(props)} /> : ''}
 
-
-
                     </div>
 
                 </div>
 
             </div>
 
-            <div className={styles.infos}>
-                <div className={styles.icones}>
-                    <FontAwesomeIcon icon={faHeart} onClick={() => handleLike()} className={styles.like} />
-                    {props.likes}
-                    {user.username === props.user.username ? <FontAwesomeIcon icon={faTrash} onClick={() => handleClick()} /> : ''}
-                </div>
-                <div className={styles.date}>
-                    @{props.user.username} {props.user.firstname} {changeDate(props.date)}
-                </div>
-            </div>
+           
         </div>
     );
 }

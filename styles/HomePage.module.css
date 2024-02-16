@@ -37,8 +37,6 @@
     font-size: 2rem;
 }
 
-
-
 .profilePic {
     object-fit: cover;
     height: 100px;
@@ -56,7 +54,7 @@
     align-items: center;
     justify-content: flex-start;
     height: 98vh;
-    width: 80vw;
+    width: 78vw;
     background-color: #d8d2c7;
     padding: 10px;
     border-top-right-radius: 16px;
@@ -123,29 +121,41 @@
 }
 
 .pageButtons {
-    display: flex;
-        flex-direction: column;
-    height: 100vh;
-    width: 25vw;
-    background-color: #CCC5B7;
+    display: flex;  
+    font-size: 2em;
+    gap: 16px;
+    cursor: pointer;
+    color: white ; 
     }
 
     .nameContainer {
         display: flex;
         height: 150px;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
+        gap: 0px;
     }
 
-    .hashtagsContainer {
-        display: flex;
-        flex-direction: column;
+/* Container hashtags */
+.hashtagsContainer {
+    display: flex;
+    height: 74vh;
+        width: 20vw;
+        background-color: aqua;
+    flex-direction: column;
         align-items: flex-start;
         scroll-behavior: smooth;
         overflow-y: scroll;
-        padding: 50px;
+    align-items: center;
+        border-bottom-left-radius: 16px;
 }
 
+.trendsTitle {
+    display: flex;
+    color: white;
+    font-size: 2em;
+    margin: 10px;
+}
 
 .logoutbtn{
   padding: 0.7rem 4rem;
@@ -154,8 +164,5 @@
   color: white;
   border: solid 1px white;
   font-weight: bold;
-  cursor: pointer;
-  margin-top: -30rem;
-  margin-left: 1rem;
-  margin-bottom: 2rem;
+cursor: pointer;
 }
