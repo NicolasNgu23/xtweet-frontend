@@ -32,10 +32,12 @@
 
 .nameContainer {
     display: flex;
+    flex-direction: column;
     color: white;
-    font-size: 2em;
-    margin: 10px;
+    font-size: 2rem;
 }
+
+
 
 .profilePic {
     object-fit: cover;
@@ -89,7 +91,7 @@
     padding-left: 16px;
         margin-right: 8px;
     }
-    
+
     .inputBar {
         width: 100%;
 }
@@ -122,43 +124,38 @@
 
 .pageButtons {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    color: white;
-    gap: 16px;
+        flex-direction: column;
+    height: 100vh;
+    width: 25vw;
+    background-color: #CCC5B7;
+    }
+
+    .nameContainer {
+        display: flex;
+        height: 150px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hashtagsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        scroll-behavior: smooth;
+        overflow-y: scroll;
+        padding: 50px;
 }
 
-.pageButton {
-    cursor: pointer;
-    font-size: xx-large;
-}
 
-/* Container trends  */
-
-.containerTrends {
-    display: flex;
-    flex-direction: column;
-    height: 74vh;
-    width: 20vw;
-    border-bottom-left-radius: 16px;
-    background-color: #10325e;
-}
-
-.trendsTitle {
-    display: flex;
-        padding: 16px;
-            justify-content: flex-start;
-    align-items: center;
-    color: white;
-        font-size: 2em;
-}
-
-.hashtagsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-    align-items: center;
-
+.logoutbtn{
+  padding: 0.7rem 4rem;
+  border-radius: 6rem;
+  background-color: #151F2B;
+  color: white;
+  border: solid 1px white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: -30rem;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
 }

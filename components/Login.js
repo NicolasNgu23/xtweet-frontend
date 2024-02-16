@@ -33,26 +33,24 @@ function Home() {
         if (data.result) {
           dispatch(login({ firstname, username }));
           if (data.token) {
-            router.push('./homePage')
+            router.push('/homePage')
           }
         }
       });
   };
 
-  const handleConnection = (username, password) => {
+	const handleConnection = (username, password, firstname) => {
 
-    fetch('http://localhost:3000/users/signin', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
-    }).then(response => response.json())
-      .then(data => {
-        if (data.result) {
-          dispatch(login({ username }));
-          console.log("Token:", data.token);
-          console.log("user", username)
+		fetch('http://localhost:3000/users/signin', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ username, password}),
+		}).then(response => response.json())
+			.then(data => {
+				if (data.result) {
+          dispatch(login({ username, firstname}));
           if (data.token) {
-            router.push('./homePage')
+            router.push('/homePage')
           }
         }
       });
@@ -64,9 +62,9 @@ function Home() {
       <main className={styles.main}>
         {loginClick && <Signup handleRegister={handleRegister} handleCloseForm={handleCloseForm} />}
         {signinClick && <Signin handleConnection={handleConnection} handleCloseForm={handleCloseForm} />}
-        
+
         <div className={styles.deco}></div>
-       
+
           <div className={styles.content}>
             <img className={styles.logo} src='twet.png' alt="" />
             <div className={styles.title}>
@@ -79,7 +77,7 @@ function Home() {
             <h3>Already have an account ? </h3>
             <button className={styles.signin} onClick={handleSigninClick}>Signin</button>
           </div>
-    
+
 
 
       </main>

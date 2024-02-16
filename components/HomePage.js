@@ -2,7 +2,9 @@ import styles from '../styles/HomePage.module.css';
 import { useState, useEffect } from 'react'
 import Tweet from './Tweet';
 import Hashtag from './Hashtag';
-
+import {logout} from '../reducers/user';
+import { useRouter } from 'next/router'
+import { useSelector, useDispatch } from "react-redux";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -17,9 +19,10 @@ export default function HomePageComponent() {
         deleteTweet(tweet);
     };
 
-    // Récupération des données dna sle redux persistant 
+    // Récupération des données dna sle redux persistant
     const user = useSelector((state) => state.user.value);
-
+    const dispatch = useDispatch();
+    const router = useRouter()
     // Variables state
     const [tweet, setTweet] = useState('');
     const [isDelete, setIsDelete] = useState('');
@@ -28,6 +31,13 @@ export default function HomePageComponent() {
     const [searchQuery, setSearchQuery] = useState('');
 
 
+
+    const handleLogout = () => {
+      dispatch(logout());
+      router.push('/'); // Navigate to login page
+    };
+
+// Rest of the component code
 
     // Compteur du nombre de lettres du tweet
     let countLetters = tweet.length;
@@ -52,8 +62,7 @@ export default function HomePageComponent() {
             });
     }, [tweet, isDelete, searchQuery]);
 
-
-    // Envoi d'un nouveau tweet 
+    // Envoi d'un nouveau tweet
     const sendTweet = (content) => {
         if (content.trim() !== "" && content.length <= 280) {
             fetch('http://localhost:3000/tweets/tweet', {
@@ -76,19 +85,19 @@ export default function HomePageComponent() {
 
     };
 
-    // Découpage des tweets dans le composant 
+    // Découpage des tweets dans le composant
     let tweets = tweetData.map((data, i) => {
         return <Tweet key={i} {...data} deleteOne={deleteOne} />
     })
 
-    // Récupération des top hashtags 
+    // Récupération des top hashtags
     const topHash = topHashtags(tweetData)
     let hashtags = topHash.map((data, i) => {
         return <Hashtag key={i} {...data} />
     })
 
 
-    // Composition de la page 
+    // Composition de la page
     return (
         <div className={styles.page}>
 
@@ -112,6 +121,7 @@ export default function HomePageComponent() {
                         {hashtags}
                     </div>
                 </div>
+                        <button className={styles.logoutbtn} onClick={handleLogout}>logout</button>
             </div>
 
 
@@ -167,6 +177,7 @@ export default function HomePageComponent() {
 
                 </div>
                 <div className={styles.tweetsContainer}>
+                {/* {selectedTweets && selectedtweet} */}
                     {tweets}
                 </div>
             </div>
@@ -176,4 +187,3 @@ export default function HomePageComponent() {
         </div>
     );
 }
-
