@@ -13,8 +13,36 @@ export default function Tweet(props) {
         props.deleteOne(props);
     };
 
-    // Récupération des données dna sle redux persistant 
+    // Récupération des données dna sle redux persistant
     const user = useSelector((state) => state.user.value);
+
+    const deleteTweet = (tweet) => {
+        fetch(`http://localhost:3000/tweets/tweets/${tweet._id}`, { method: 'DELETE' })
+            .then(response => response.json())
+            .then(tweets => {
+                console.log(tweets);
+            });
+    };
+
+
+    const handleLike = () => {
+      fetch('http://localhost:3000/tweets/like', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: user.token, tweetId: props._id }),
+      }).then(response => response.json())
+        .then(data => {
+          data.result && dispatch(likeTweet({ tweetId: props._id, username: user.username }));
+        });
+    };
+    console.log(props._id)
+
+    // let likeStyle = {};
+    // if (props.like.some(e => e.username === user.username)) {
+    //   likeStyle = { 'color': '#f91980' };
+    // }
+
+
 
     return (
         <div className={styles.tweetContainer}>
@@ -25,7 +53,7 @@ export default function Tweet(props) {
                     <img src='./profil.png' className={styles.profilePic} />
                     <span className={styles.tweetTop}>@{props.user.username} </span>
                 </div>
-              
+
 
                 <div className={styles.tweetContent}>
                     <ColoredHashtags text={props.content} />
@@ -46,7 +74,7 @@ export default function Tweet(props) {
                         </div>
                         {user.username === props.user.username ? <FontAwesomeIcon icon={faTrash} onClick={() => handleClick(props)} /> : ''}
 
-                      
+
 
                     </div>
 
@@ -54,15 +82,22 @@ export default function Tweet(props) {
 
             </div>
 
-
-
-
-
-
-
+            <div className={styles.infos}>
+                <div className={styles.icones}>
+                    <FontAwesomeIcon icon={faHeart} onClick={() => handleLike()} className={styles.like} />
+                    {props.likes}
+                    {user.username === props.user.username ? <FontAwesomeIcon icon={faTrash} onClick={() => handleClick()} /> : ''}
+                </div>
+                <div className={styles.date}>
+                    @{props.user.username} {props.user.firstname} {changeDate(props.date)}
+                </div>
+            </div>
         </div>
     );
 }
+
+
+
 
 
 
