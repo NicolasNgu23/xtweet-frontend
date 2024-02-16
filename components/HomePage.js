@@ -1,10 +1,21 @@
 import styles from '../styles/HomePage.module.css';
 import { useState, useEffect } from 'react'
 import Tweet from './Tweet';
+import Hashtag from './Hashtag';
+
+import { useSelector } from "react-redux";
+
+const { topHashtags } = require('../modules/topHashtags')
+
 
 export default function HomePageComponent() {
 
-    let username = 'lacapsule';
+    // const deleteOne = () => {
+    //     deleteTweet(); 
+    // };
+
+    // Récupération des données dna sle redux persistant 
+    const user = useSelector((state) => state.user.value);
 
     // Variables state
     const [tweet, setTweet] = useState('');
@@ -31,13 +42,14 @@ export default function HomePageComponent() {
 
     // Envoi d'un nouveau tweet 
     const sendTweet = (content) => {
-
-        fetch('http://localhost:3000/tweets/tweet', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, content }),
-        }).then(response => response.json())
-            .then(() => { setTweet('') })
+        if (content.trim() !== "" && content.length <= 280) {
+            fetch('http://localhost:3000/tweets/tweet', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username : user.username, content }),
+            }).then(response => response.json())
+                .then(() => { setTweet('') })
+        }
     }
 
     // Découpage des tweets dans le composant 
@@ -45,22 +57,17 @@ export default function HomePageComponent() {
         return <Tweet key={i} {...data} />
     })
 
+    // Récupération des top hashtags 
+    const topHash = topHashtags(tweetData)
+    let hashtags = topHash.map((data, i) => {
+        return <Hashtag key={i} {...data} />
+    })
 
-    // const hashtagCounts = tweets.reduce((accumulator, tweet) => {
-    //     const hashtags = tweet.content.match(/#\w+/g) || [];
-
-    //     hashtags.forEach(hashtag => {
-    //         accumulator[hashtag] = (accumulator[hashtag] || 0) + 1;
-    //     });
-
-    //     return accumulator;
-    // }, {});
-
-    // console.log(hashtagCounts);
-
+    
     // Composition de la page 
     return (
         <div className={styles.page}>
+
             <div className={styles.containerLeft}>
                 <div className={styles.imageContainer}>
                     <img src='logo.png' className={styles.image}></img>
@@ -68,11 +75,12 @@ export default function HomePageComponent() {
                 <div className={styles.profilContainer}>
                     <img src='profil.png' className={styles.profilePic}></img>
                     <div className={styles.nameContainer}>
-                        <p> Nom</p>
-                        <p>@Username</p>
+                        <p>{user.firstname}</p>
+                        <p>@{user.username}</p>
                     </div>
                 </div>
             </div>
+
             <div className={styles.containerMiddle}>
                 <div className={styles.writeTweet}>
                     <div className={styles.sendTweet}>
@@ -94,9 +102,16 @@ export default function HomePageComponent() {
                     {tweets}
                 </div>
             </div>
-            <div className={styles.containerRight}>
 
+            <div className={styles.containerRight}>
+                <div className={styles.nameContainer}>
+                    Trends
+                </div>
+                <div className={styles.hashtagsContainer}>
+                    {hashtags}
+                </div>
             </div>
+
         </div>
     );
 }

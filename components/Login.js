@@ -23,7 +23,6 @@ function Home() {
   const handleSigninClick = (() => {setSigninClick(true)})
 
 
-
 	const handleRegister = (firstname, username, password) => {
 		fetch('http://localhost:3000/users/signup', {
 			method: 'POST',
@@ -39,7 +38,6 @@ function Home() {
 				}
 			});
 	};
-
 
 	const handleConnection = (username, password) => {
 
