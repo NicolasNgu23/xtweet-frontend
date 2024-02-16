@@ -33,26 +33,24 @@ function Home() {
 				if (data.result) {
 					dispatch(login({ firstname, username }));
           if (data.token) {
-            router.push('./homePage')
+            router.push('/homePage')
           }
 				}
 			});
 	};
 
-	const handleConnection = (username, password) => {
+	const handleConnection = (username, password, firstname) => {
 
 		fetch('http://localhost:3000/users/signin', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ username, password }),
+			body: JSON.stringify({ username, password}),
 		}).then(response => response.json())
 			.then(data => {
 				if (data.result) {
-          dispatch(login({ username}));
-          console.log("Token:", data.token);
-          console.log("user", username)
+          dispatch(login({ username, firstname}));
           if (data.token) {
-            router.push('./homePage')
+            router.push('/homePage')
           }
 				}
 			});

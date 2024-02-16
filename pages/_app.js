@@ -8,10 +8,11 @@ import { PersistGate } from 'redux-persist/integration/react';
 import storage from 'redux-persist/lib/storage';
 
 import user from '../reducers/user';
+import tweets from '../reducers/tweets';
 
 
 
-const reducers = combineReducers({user});
+const reducers = combineReducers({user, tweets});
 const persistConfig = { key: 'app}licationName', storage };
 
 

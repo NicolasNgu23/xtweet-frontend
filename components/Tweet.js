@@ -13,7 +13,7 @@ export default function Tweet(props) {
         // props.deleteTweet(props);
     };
 
-    // Récupération des données dna sle redux persistant 
+    // Récupération des données dna sle redux persistant
     const user = useSelector((state) => state.user.value);
 
     const deleteTweet = (tweet) => {
@@ -25,6 +25,25 @@ export default function Tweet(props) {
     };
 
 
+    const handleLike = () => {
+      fetch('http://localhost:3000/tweets/like', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: user.token, tweetId: props._id }),
+      }).then(response => response.json())
+        .then(data => {
+          data.result && dispatch(likeTweet({ tweetId: props._id, username: user.username }));
+        });
+    };
+    console.log(props._id)
+
+    // let likeStyle = {};
+    // if (props.like.some(e => e.username === user.username)) {
+    //   likeStyle = { 'color': '#f91980' };
+    // }
+
+
+
     return (
         <div className={styles.tweetContainer}>
             <div className={styles.tweetContent}>
@@ -33,7 +52,7 @@ export default function Tweet(props) {
 
             <div className={styles.infos}>
                 <div className={styles.icones}>
-                    <FontAwesomeIcon icon={faHeart} />
+                    <FontAwesomeIcon icon={faHeart} onClick={() => handleLike()} className={styles.like} />
                     {props.likes}
                     {user.username === props.user.username ? <FontAwesomeIcon icon={faTrash} onClick={() => handleClick()} /> : ''}
                 </div>
@@ -44,6 +63,9 @@ export default function Tweet(props) {
         </div>
     );
 }
+
+
+
 
 
 

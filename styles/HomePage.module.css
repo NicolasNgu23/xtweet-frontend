@@ -30,9 +30,11 @@
 .nameContainer {
     display: flex;
     flex-direction: column;
-color: white;
+    color: white;
     font-size: 2rem;
 }
+
+
 
 .profilePic {
     object-fit: cover;
@@ -119,14 +121,14 @@ color: white;
     width: 25vw;
     background-color: #CCC5B7;
     }
-    
+
     .nameContainer {
         display: flex;
         height: 150px;
         justify-content: center;
         align-items: center;
     }
-    
+
     .hashtagsContainer {
         display: flex;
         flex-direction: column;
@@ -134,4 +136,18 @@ color: white;
         scroll-behavior: smooth;
         overflow-y: scroll;
         padding: 50px;
+}
+
+
+.logoutbtn{
+  padding: 0.7rem 4rem;
+  border-radius: 6rem;
+  background-color: #151F2B;
+  color: white;
+  border: solid 1px white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: -30rem;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
 }
