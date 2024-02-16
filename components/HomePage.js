@@ -28,7 +28,6 @@ export default function HomePageComponent() {
     const [searchQuery, setSearchQuery] = useState('');
 
 
-
     // Compteur du nombre de lettres du tweet
     let countLetters = tweet.length;
     let styleCounter = {};
