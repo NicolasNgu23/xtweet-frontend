@@ -80,19 +80,26 @@
 .tweetInput {
     height: 80px;
     border-radius: 16px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: 60vw;
     border: none;
     background-color: transparent;
     border: solid 2px white;
     color: white;
+    padding-left: 16px;
+        margin-right: 8px;
+    }
+    
+    .inputBar {
+        width: 100%;
 }
 
 .tweetButton {
+    width: 40px;
+        height: 80px;
     border: 2px solid;
     border-radius: 16px;
     font-size: 1rem;
-    margin-top: 16px;
     border: solid 2px white;
     color: #151F2B;
 }
@@ -105,7 +112,7 @@
 
 .tweetsContainer {
     display: flex;
-    width: 50vw;
+    width: 60vw;
     flex-direction: column;
     align-items: flex-start;
     scroll-behavior: smooth;
@@ -116,6 +123,7 @@
 .pageButtons {
     display: flex;
     justify-content: flex-start;
+    align-items: flex-start;
     color: white;
     gap: 16px;
 }
@@ -133,14 +141,16 @@
     height: 74vh;
     width: 20vw;
     border-bottom-left-radius: 16px;
-    background-color: #172a43;
+    background-color: #10325e;
 }
 
 .trendsTitle {
     display: flex;
-    height: 150px;
-    justify-content: center;
+        padding: 16px;
+            justify-content: flex-start;
     align-items: center;
+    color: white;
+        font-size: 2em;
 }
 
 .hashtagsContainer {
@@ -151,11 +161,4 @@
     overflow-y: scroll;
     align-items: center;
 
-}
-
-.trendsTitle {
-    display: flex;
-    color: white;
-    font-size: 2em;
-    margin: 10px;
 }

@@ -18,29 +18,48 @@ export default function Tweet(props) {
 
     return (
         <div className={styles.tweetContainer}>
-            <div className={styles.tweetTop}>
-                @{props.user.username} 
-            </div>
 
-            <div className={styles.tweetContent}>
-                <ColoredHashtags text={props.content} />
-            </div>
 
-            <div className={styles.infos}>
-                <div className={styles.iconeLike}>
-                    <FontAwesomeIcon icon={faHeart} />
-                    {props.likes}
+            <div className={styles.tweetTextContainer}>
+                <div className={styles.profilContainer}>
+                    <img src='./profil.png' className={styles.profilePic} />
+                    <span className={styles.tweetTop}>@{props.user.username} </span>
                 </div>
-                <div className={styles.iconeDroite}>
-                    <div>
+              
+
+                <div className={styles.tweetContent}>
+                    <ColoredHashtags text={props.content} />
+                </div>
+
+
+                <div className={styles.infos}>
+
+                    <div className={styles.iconeLike}>
+                        <FontAwesomeIcon icon={faHeart} />
+                        {props.likes}
+                    </div>
+
+                    <div className={styles.iconeDroite}>
+
+                        <div className={styles.date}>
+                            {changeDate(props.date)}
+                        </div>
                         {user.username === props.user.username ? <FontAwesomeIcon icon={faTrash} onClick={() => handleClick(props)} /> : ''}
+
+                      
+
                     </div>
-                    <div className={styles.date}>
-                        {changeDate(props.date)}
-                    </div>
+
                 </div>
-                
+
             </div>
+
+
+
+
+
+
+
         </div>
     );
 }
@@ -54,7 +73,7 @@ const ColoredHashtags = ({ text }) => {
         if (word.startsWith('#')) {
             // Si le mot commence par '#', appliquer le style bleu
             return (
-                <span key={i} style={{ color: 'blue' }}>{word + ' '}</span>
+                <span key={i} style={{ 'color': '#10325e' }}>{word + ' '}</span>
             );
         } else {
             return <span key={i}>{word} </span>;

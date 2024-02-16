@@ -9,7 +9,7 @@ export default function Hashtag(props) {
             <div className={styles.hashtag}>
                 {props.hashtag}
             </div>
-            <div>
+            <div className={styles.numberHashtag}>
                 {props.nbOccurence + ' Tweet(s)'} 
             </div>
            

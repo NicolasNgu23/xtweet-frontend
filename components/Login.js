@@ -13,83 +13,77 @@ function Home() {
   const [loginClick, setLoginClick] = useState(false)
   const [signinClick, setSigninClick] = useState(false)
 
-  const handleLoginClick = (() => { setLoginClick(true)})
+  const handleLoginClick = (() => { setLoginClick(true) })
 
-  const handleCloseForm = (() =>{
+  const handleCloseForm = (() => {
     setLoginClick(false),
-    setSigninClick(false)
+      setSigninClick(false)
   })
 
-  const handleSigninClick = (() => {setSigninClick(true)})
+  const handleSigninClick = (() => { setSigninClick(true) })
 
 
-	const handleRegister = (firstname, username, password) => {
-		fetch('http://localhost:3000/users/signup', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ firstname, username, password }),
-		}).then(response => response.json())
-			.then(data => {
-				if (data.result) {
-					dispatch(login({ firstname, username }));
+  const handleRegister = (firstname, username, password) => {
+    fetch('http://localhost:3000/users/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstname, username, password }),
+    }).then(response => response.json())
+      .then(data => {
+        if (data.result) {
+          dispatch(login({ firstname, username }));
           if (data.token) {
             router.push('./homePage')
           }
-				}
-			});
-	};
+        }
+      });
+  };
 
-	const handleConnection = (username, password) => {
+  const handleConnection = (username, password) => {
 
-		fetch('http://localhost:3000/users/signin', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ username, password }),
-		}).then(response => response.json())
-			.then(data => {
-				if (data.result) {
-          dispatch(login({ username}));
+    fetch('http://localhost:3000/users/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password }),
+    }).then(response => response.json())
+      .then(data => {
+        if (data.result) {
+          dispatch(login({ username }));
           console.log("Token:", data.token);
           console.log("user", username)
           if (data.token) {
             router.push('./homePage')
           }
-				}
-			});
-	};
-
-
-
-
+        }
+      });
+  };
 
   return (
 
-
+    <div className={styles.page}>
       <main className={styles.main}>
-        {loginClick &&
-        <Signup handleRegister={handleRegister} handleCloseForm={handleCloseForm}/>
-        }
-
+        {loginClick && <Signup handleRegister={handleRegister} handleCloseForm={handleCloseForm} />}
         {signinClick && <Signin handleConnection={handleConnection} handleCloseForm={handleCloseForm} />}
-
-
+        
         <div className={styles.deco}></div>
-        <div className={styles.content}>
-        <img className={styles.logo} src='twet.png' alt="" />
-          <div className={styles.title}>
-          <h1>See What's Happening</h1>
+       
+          <div className={styles.content}>
+            <img className={styles.logo} src='twet.png' alt="" />
+            <div className={styles.title}>
+              <h1>See What's Happening</h1>
+            </div>
+
+            <h2>Join Hackatweet today.</h2>
+
+            <button className={styles.signup} onClick={handleLoginClick}>Sign up</button>
+            <h3>Already have an account ? </h3>
+            <button className={styles.signin} onClick={handleSigninClick}>Signin</button>
           </div>
+    
 
-
-
-          <h2>Join Hackatweet today.</h2>
-
-          <button className={styles.signup} onClick={handleLoginClick}>Sign up</button>
-          <h3>Already have an account ? </h3>
-          <button className={styles.signin} onClick={handleSigninClick}>Signin</button>
-        </div>
 
       </main>
+    </div>
 
   );
 }

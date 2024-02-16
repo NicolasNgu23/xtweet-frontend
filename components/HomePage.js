@@ -3,6 +3,10 @@ import { useState, useEffect } from 'react'
 import Tweet from './Tweet';
 import Hashtag from './Hashtag';
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+
 import { useSelector } from "react-redux";
 const { topHashtags } = require('../modules/topHashtags')
 
@@ -124,9 +128,8 @@ export default function HomePageComponent() {
 
                 <div className={styles.writeTweet}>
 
-
                     {page === 'Tweet' ?
-                        <div>
+                        <div className={styles.inputBar}>
                             <input className={styles.tweetInput}
                                 type="text"
                                 onChange={(e) => setTweet(e.target.value)}
@@ -134,19 +137,21 @@ export default function HomePageComponent() {
                                 placeholder='Tweeter...'
 
                             />
+
+                            <button className={styles.tweetButton}
+                                onClick={() => sendTweet(tweet)}>
+                                <FontAwesomeIcon icon={faCheck} />
+                            </button>
+
                             <div className={styles.sendTweet}>
                                 <div style={styleCounter}>
                                     {countLetters + '/ 280'}
                                 </div>
 
-
-                                <button className={styles.tweetButton}
-                                    onClick={() => sendTweet(tweet)}> Send
-                                </button>
                             </div>
                         </div>
                         :
-                        <div>
+                        <div className={styles.inputBar}>
                             <input className={styles.tweetInput}
                                 type="text"
                                 onChange={(e) => setSearchQuery(e.target.value)}

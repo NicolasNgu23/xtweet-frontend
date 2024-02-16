@@ -2,14 +2,15 @@
     display: flex;
     width: 90%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     color: white;
-    border-bottom: 1px solid white;
     padding: 16px;
-
-
 }
 
 .hashtag {
     font-size: 2em;
+}
+
+.numberHashtag{
+    font-size: 0.5em;
 }
