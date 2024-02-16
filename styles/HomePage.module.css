@@ -1,37 +1,40 @@
 .page {
     display: flex;
-    gap: 5px;
+    margin: 10px;
+    border-radius: 16px;
+
 }
-
-
-/* Container de droite */
 
 .containerLeft {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    height: 100vh;
-    width: 25vw;
-    background-color: #CCC5B7;
 }
 
-.image {
-    height: 100px;
-    width: auto;
-    padding: 16px;
-}
+/* Container de droite */
 
-.profilContainer {
+.containerProfil {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #151F2B;
+    border-top-left-radius: 16px;
+    height: 24vh;
+    width: 20vw;
+
 }
+
+.logoContainer {
+    Display: flex;
+    justify-content: flex-start;
+}
+
 
 .nameContainer {
     display: flex;
-    flex-direction: column;
-color: white;
-    font-size: 2rem;
+    color: white;
+    font-size: 2em;
+    margin: 10px;
 }
 
 .profilePic {
@@ -50,9 +53,13 @@ color: white;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 100vh;
-    width: 50vw;
-    background-color: #CCC5B7;
+    height: 98vh;
+    width: 80vw;
+    background-color: #d8d2c7;
+    padding: 10px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+
 }
 
 .writeTweet {
@@ -66,18 +73,15 @@ color: white;
 .sendTweet {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 8px;
 }
 
-
 .tweetInput {
     height: 80px;
-    border: 2px solid;
     border-radius: 16px;
     font-size: 2rem;
-    width: 40vw;
-    min-width: 125px;
-    margin-top: 16px;
+    width: 60vw;
     border: none;
     background-color: transparent;
     border: solid 2px white;
@@ -85,10 +89,9 @@ color: white;
 }
 
 .tweetButton {
-    height: 80px;
     border: 2px solid;
     border-radius: 16px;
-    font-size: 2rem;
+    font-size: 1rem;
     margin-top: 16px;
     border: solid 2px white;
     color: #151F2B;
@@ -107,31 +110,52 @@ color: white;
     align-items: flex-start;
     scroll-behavior: smooth;
     overflow-y: scroll;
-    padding: 50px;
+    margin-top: 16px;
 }
 
-/* Container droite  */
-
-.containerRight {
+.pageButtons {
     display: flex;
-        flex-direction: column;
-    height: 100vh;
-    width: 25vw;
-    background-color: #CCC5B7;
-    }
-    
-    .nameContainer {
-        display: flex;
-        height: 150px;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .hashtagsContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        scroll-behavior: smooth;
-        overflow-y: scroll;
-        padding: 50px;
+    justify-content: flex-start;
+    color: white;
+    gap: 16px;
+}
+
+.pageButton {
+    cursor: pointer;
+    font-size: xx-large;
+}
+
+/* Container trends  */
+
+.containerTrends {
+    display: flex;
+    flex-direction: column;
+    height: 74vh;
+    width: 20vw;
+    border-bottom-left-radius: 16px;
+    background-color: #172a43;
+}
+
+.trendsTitle {
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.hashtagsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    align-items: center;
+
+}
+
+.trendsTitle {
+    display: flex;
+    color: white;
+    font-size: 2em;
+    margin: 10px;
 }

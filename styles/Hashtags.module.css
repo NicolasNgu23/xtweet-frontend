@@ -1,23 +1,13 @@
-
-
-
 .hashtagContainer {
     display: flex;
-    width: 100%;
+    width: 90%;
     flex-direction: column;
+    justify-content: center;
     color: white;
-    padding-top: 32px;
-    padding-bottom: 8px;
     border-bottom: 1px solid white;
     padding: 16px;
 
-    margin-bottom: 10px;
-    background: rgba(236, 243, 233, 0.07);
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(6.2px);
-    -webkit-backdrop-filter: blur(6.2px);
-    border: 1px solid rgba(236, 243, 233, 0.21);
+
 }
 
 .hashtag {

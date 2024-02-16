@@ -10,36 +10,36 @@ const { changeDate } = require('../modules/changeDate');
 export default function Tweet(props) {
 
     const handleClick = () => {
-        // props.deleteTweet(props);
+        props.deleteOne(props);
     };
 
     // Récupération des données dna sle redux persistant 
     const user = useSelector((state) => state.user.value);
 
-    const deleteTweet = (tweet) => {
-        fetch(`http://localhost:3000/tweets/tweets/${tweet._id}`, { method: 'DELETE' })
-            .then(response => response.json())
-            .then(tweets => {
-                console.log(tweets);
-            });
-    };
-
-
     return (
         <div className={styles.tweetContainer}>
+            <div className={styles.tweetTop}>
+                @{props.user.username} 
+            </div>
+
             <div className={styles.tweetContent}>
                 <ColoredHashtags text={props.content} />
             </div>
 
             <div className={styles.infos}>
-                <div className={styles.icones}>
+                <div className={styles.iconeLike}>
                     <FontAwesomeIcon icon={faHeart} />
                     {props.likes}
-                    {user.username === props.user.username ? <FontAwesomeIcon icon={faTrash} onClick={() => handleClick()} /> : ''}
                 </div>
-                <div className={styles.date}>
-                    @{props.user.username} {props.user.firstname} {changeDate(props.date)}
+                <div className={styles.iconeDroite}>
+                    <div>
+                        {user.username === props.user.username ? <FontAwesomeIcon icon={faTrash} onClick={() => handleClick(props)} /> : ''}
+                    </div>
+                    <div className={styles.date}>
+                        {changeDate(props.date)}
+                    </div>
                 </div>
+                
             </div>
         </div>
     );

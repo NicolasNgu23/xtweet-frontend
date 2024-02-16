@@ -9,7 +9,7 @@
     border-bottom: 1px solid white;
     padding: 20px;
     
-        margin-bottom: 10px;
+    margin-bottom: 16px;
         background: rgba(236, 243, 233, 0.07);
         border-radius: 16px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -18,23 +18,34 @@
         border: 1px solid rgba(236, 243, 233, 0.21);
 }
 
+ .tweetTop {
+     color: black;
+     margin-bottom: 16px;
+ }
 .tweetContent {
     font-size: 2em;
 }
 
 .infos {
     display: flex;
-        align-items: center;
+    align-items: center;
         justify-content: space-between;
 }
 
 .date {
     display: flex;
-    gap:16px; 
+    color: black;
+        font-size: 8px;
 }
 
-.icones {
+.iconeLike {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 4px;
+}
+
+.iconeDroite {
+display: flex;
+    align-items: center;
+    gap: 16px ; 
 }
