@@ -10,14 +10,13 @@
 
 .signupForm{
   background-color: #151F2B;
-  border: solid 2px white;
-  border-radius: 8px;
+  border: solid 4px white;
+    border-radius: 32px;
   width: 30vw;
   height: 40vh;
   position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 55%;
+    left: 58%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,10 +30,10 @@
 .signupForm input{
   width: fit-content;
   border: solid 1px rgba(255,255,255,0.5);
-  border-radius: 2px;
+  border-radius: 32px;
   background-color: #151F2B;
-  padding: 0.4rem;
-  margin-bottom: 0.5rem;
+  padding: 1rem 4rem;
+    margin-bottom: 0.5rem;
   color: white;
 }
 
@@ -57,7 +56,8 @@
 
 .submitSignin{
   margin-top: 1rem;
-  padding: 0.3rem 3.5rem;
+  padding: 1rem 4rem;
+    /* Ajustez le padding pour agrandir le bouton */
   border-radius: 6rem;
   background-color: white;
   color: black;
@@ -70,3 +70,4 @@
   display: flex;
   flex-direction: column;
 }
+ 

@@ -17,13 +17,31 @@
 }
 
 .deco{
+  display: flex;
+    justify-content: center;
+    align-items: center;
   background-color: aquamarine;
-  width: 40vw;
-  background-image: url('../public/home.jpeg');
+  width: 80vw;
+  /* background-image: url('../public/home.jpeg'); */
   background-size: cover;
   background-position: center;
    border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
+  writing-mode: vertical;
+    text-orientation: mixed;
+    padding: 16px;
+  }
+  
+  .movingText {
+    position: fixed;
+    color: white;
+    font-weight: 100;
+  }
+
+  .welcomeText {
+    position: fixed;
+      color: white;
+      font-size: 150px;
   }
 
 .content{
@@ -41,7 +59,8 @@
 }
 
 .title{
-  font-size: 2rem;
+  font-size: 4rem;
+  font-weight: 100; 
   max-width: 24rem;
 }
 
@@ -68,12 +87,12 @@
 
 .signupForm{
   background-color: #151F2B;
-  border: solid 2px white;
-  border-radius: 8px;
-  width: 30vw;
+  border: solid 4px white;
+  border-radius: 16px;
+  width: 20vw;
   height: 40vh;
   position: absolute;
-  top: 35%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;

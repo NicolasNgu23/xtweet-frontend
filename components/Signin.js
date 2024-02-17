@@ -16,7 +16,6 @@ function Signin(props) {
 
   return (
     <div className={styles.signupForm}>
-      <img className={styles.logo} src='twet.png' alt="" />
       <button className={styles.closeForm} onClick={handleClick}>x</button>
       <h3>Sign In to your Hackatweet account</h3>
       <div className={styles.form}>

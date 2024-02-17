@@ -105,17 +105,14 @@ export default function HomePageComponent() {
 
                     <img src='profil.png' className={styles.profilePic}></img>
                     <div className={styles.nameContainer}>
-
                         <p> Welcome @{user.username}</p>
                         <button className={styles.logoutbtn} onClick={handleLogout}>Logout</button>
-
                     </div>
                 </div>
 
                 <div className={styles.containerTrends}>
                     <div className={styles.hashtagsContainer}>
                         <span className={styles.trendsTitle}>Trends</span>
-
                         {hashtags}
                     </div>
                 </div>

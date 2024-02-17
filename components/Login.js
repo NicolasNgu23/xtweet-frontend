@@ -6,6 +6,9 @@ import { useDispatch} from 'react-redux';
 import {login} from '../reducers/user'
 import { useRouter } from 'next/router'
 
+import { TypeAnimation } from 'react-type-animation';
+
+
 
 function Home() {
   const router = useRouter()
@@ -63,20 +66,41 @@ function Home() {
         {loginClick && <Signup handleRegister={handleRegister} handleCloseForm={handleCloseForm} />}
         {signinClick && <Signin handleConnection={handleConnection} handleCloseForm={handleCloseForm} />}
 
-        <div className={styles.deco}></div>
+        <div className={styles.deco}>
+          <div className={styles.welcomeText}>
+            Welcome to :
+            <TypeAnimation
+              sequence={[
+                'Hackatweet ',
+                1000,
+                'Twitter ',
+                1000,
+                'X ',
+                1000,
+                'La Capsule',
+                1000,
+              ]}
+              wrapper="span"
+              speed={1}
+              style={{ fontSize: '150px', display: 'flex' }}
+              repeat={Infinity}
+              className={styles.movingText}
+            />
+          </div>
 
-          <div className={styles.content}>
-            <img className={styles.logo} src='twet.png' alt="" />
+        </div>
+
+        <div className={styles.content}>
             <div className={styles.title}>
-              <h1>See What's Happening</h1>
+            <h1>Come join us 😁</h1>
             </div>
 
             <h2>Join Hackatweet today.</h2>
 
-            <button className={styles.signup} onClick={handleLoginClick}>Sign up</button>
+          <button className={styles.signup} onClick={handleLoginClick}>Sign Up</button>
             <h3>Already have an account ? </h3>
-            <button className={styles.signin} onClick={handleSigninClick}>Signin</button>
-          </div>
+          <button className={styles.signin} onClick={handleSigninClick}>Sign In</button>
+        </div>
 
 
 

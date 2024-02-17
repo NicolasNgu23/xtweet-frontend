@@ -9,11 +9,15 @@ const { changeDate } = require('../modules/changeDate');
 
 export default function Tweet(props) {
 
+
+    const [like, setLike] = useState(false)
+    const styleHeart = like ? { 'color': 'white' } : { 'color': 'red' }
+
     const handleClick = () => {
         props.deleteOne(props);
     };
 
-    // Récupération des données dna sle redux persistant
+    // Récupération des données dans le redux persistant
     const user = useSelector((state) => state.user.value);
 
     const deleteTweet = (tweet) => {
@@ -42,8 +46,6 @@ export default function Tweet(props) {
     //   likeStyle = { 'color': '#f91980' };
     // }
 
-
-
     return (
         <div className={styles.tweetContainer}>
 
@@ -54,7 +56,6 @@ export default function Tweet(props) {
                     <span className={styles.tweetTop}>@{props.user.username} </span>
                 </div>
 
-
                 <div className={styles.tweetContent}>
                     <ColoredHashtags text={props.content} />
                 </div>
@@ -63,8 +64,10 @@ export default function Tweet(props) {
                 <div className={styles.infos}>
 
                     <div className={styles.iconeLike}>
-                        <FontAwesomeIcon icon={faHeart} />
-                        {props.likes}
+                        <FontAwesomeIcon icon={faHeart} style={styleHeart} onClick={() => {
+                            setLike(!like)
+                        }} />
+                        {like? '0' : '1'}
                     </div>
 
                     <div className={styles.iconeDroite}>
