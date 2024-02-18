@@ -32,7 +32,7 @@ export default function Tweet(props) {
 
         const endpoint = isLikedByUser ? 'dislike' : 'like';
 
-        fetch(`hhttps://hackatweet-backend-nu.vercel.app/tweets/${endpoint}`, {
+        fetch(`https://hackatweet-backend-nu.vercel.app/tweets/${endpoint}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token: user.token, tweetId: props._id }),
