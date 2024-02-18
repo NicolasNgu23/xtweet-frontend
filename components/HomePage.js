@@ -18,10 +18,18 @@ export default function HomePageComponent() {
         deleteTweet(tweet);
     };
 
+    const handleUpdate = () => {
+        // Mettez à jour l'état local pour déclencher un re-render
+        setUpdateTrigger(!updateTrigger);
+    };
+
+
     // Récupération des données dna sle redux persistant
     const user = useSelector((state) => state.user.value);
+
     const dispatch = useDispatch();
     const router = useRouter()
+
     // Variables state
     const [tweet, setTweet] = useState('');
     const [isDelete, setIsDelete] = useState('');
@@ -29,6 +37,7 @@ export default function HomePageComponent() {
     const [page, setPage] = useState('Tweet');
     const [searchQuery, setSearchQuery] = useState('');
 
+    const [updateTrigger, setUpdateTrigger] = useState(false);
 
 
     const handleLogout = () => {
@@ -58,8 +67,11 @@ export default function HomePageComponent() {
                 );
 
                 setTweetData(filteredTweets);
-            });
-    }, [tweet, isDelete, searchQuery]);
+            })
+            .catch(error => {
+                console.error('Error during fetch:', error);
+            })
+    }, [tweet, isDelete, searchQuery, updateTrigger]);
 
     // Envoi d'un nouveau tweet
     const sendTweet = (content) => {
@@ -67,9 +79,15 @@ export default function HomePageComponent() {
             fetch('http://localhost:3000/tweets/tweet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: user.username, content }),
+                body: JSON.stringify({ token: user.token, content }),
             }).then(response => response.json())
-                .then(() => { setTweet('') })
+                .then(
+                    () => {
+                        setTweet('')
+                    }
+                ).catch(error => {
+                    console.error('Error during fetch:', error);
+                })
         }
     }
 
@@ -80,13 +98,23 @@ export default function HomePageComponent() {
             .then((tweet) => {
                 console.log('Tweet deleted', tweet);
                 setIsDelete(tweet);
-            });
+            })
+            .catch(error => {
+                console.error('Error during fetch:', error);
+            })
 
     };
 
     // Découpage des tweets dans le composant
     let tweets = tweetData.map((data, i) => {
-        return <Tweet key={i} {...data} deleteOne={deleteOne} />
+        const isLikedByUser = data.likes.some((e) => e.token === user.token);
+
+        return <Tweet
+            key={i} {...data}
+            deleteOne={deleteOne}
+            updateHomePage={handleUpdate}
+            isLiked={isLikedByUser}  // Nouvelle propriété isLiked
+        />
     })
 
     // Récupération des top hashtags
@@ -95,7 +123,6 @@ export default function HomePageComponent() {
         return <Hashtag key={i} {...data} />
     })
 
-
     // Composition de la page
     return (
         <div className={styles.page}>
@@ -103,7 +130,7 @@ export default function HomePageComponent() {
             <div className={styles.containerLeft}>
                 <div className={styles.containerProfil}>
 
-                    <img src='profil.png' className={styles.profilePic}></img>
+                    <img src={user.profilPhoto} className={styles.profilePic}></img>
                     <div className={styles.nameContainer}>
                         <p> Welcome @{user.username}</p>
                         <button className={styles.logoutbtn} onClick={handleLogout}>Logout</button>

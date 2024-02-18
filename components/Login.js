@@ -8,8 +8,6 @@ import { useRouter } from 'next/router'
 
 import { TypeAnimation } from 'react-type-animation';
 
-
-
 function Home() {
   const router = useRouter()
   const dispatch = useDispatch();
@@ -34,7 +32,7 @@ function Home() {
     }).then(response => response.json())
       .then(data => {
         if (data.result) {
-          dispatch(login({ firstname, username }));
+          dispatch(login({ firstname, username, token: data.token, profilPhoto: data.profilPhoto}));
           if (data.token) {
             router.push('/homePage')
           }
@@ -51,7 +49,7 @@ function Home() {
 		}).then(response => response.json())
 			.then(data => {
 				if (data.result) {
-          dispatch(login({ username, firstname}));
+          dispatch(login({ username, firstname, token: data.token, profilPhoto: data.profilPhoto}));
           if (data.token) {
             router.push('/homePage')
           }
@@ -73,11 +71,11 @@ function Home() {
               sequence={[
                 'Hackatweet ',
                 1000,
-                'Twitter ',
+                'You',
                 1000,
-                'X ',
+                'Everyone',
                 1000,
-                'La Capsule',
+                'The world',
                 1000,
               ]}
               wrapper="span"

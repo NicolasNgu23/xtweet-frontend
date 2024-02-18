@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/Tweet.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from "react-redux";
@@ -9,9 +9,7 @@ const { changeDate } = require('../modules/changeDate');
 
 export default function Tweet(props) {
 
-
-    const [like, setLike] = useState(false)
-    const styleHeart = like ? { 'color': 'white' } : { 'color': 'red' }
+    const [like, setLike] = useState(props.isLiked); 
 
     const handleClick = () => {
         props.deleteOne(props);
@@ -20,39 +18,41 @@ export default function Tweet(props) {
     // Récupération des données dans le redux persistant
     const user = useSelector((state) => state.user.value);
 
-    const deleteTweet = (tweet) => {
-        fetch(`http://localhost:3000/tweets/tweets/${tweet._id}`, { method: 'DELETE' })
-            .then(response => response.json())
-            .then(tweets => {
-                console.log(tweets);
-            });
-    };
+    const styleHeart = props.likes.some((e) => e === user.username) ? { 'color': 'red' } : { 'color': 'white' }
+
+    useEffect(() => {
+        const tweetLiked = props.likes.some((e) => e === user.username);
+        setLike(tweetLiked);
+    }, [props.likes, user._id]);
 
 
     const handleLike = () => {
-      fetch('http://localhost:3000/tweets/like', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token: user.token, tweetId: props._id }),
-      }).then(response => response.json())
-        .then(data => {
-          data.result && dispatch(likeTweet({ tweetId: props._id, username: user.username }));
-        });
-    };
-    console.log(props._id)
 
-    // let likeStyle = {};
-    // if (props.like.some(e => e.username === user.username)) {
-    //   likeStyle = { 'color': '#f91980' };
-    // }
+        const isLikedByUser = props.likes.some((e) => e === user.username);
+
+        const endpoint = isLikedByUser ? 'dislike' : 'like';
+
+        fetch(`http://localhost:3000/tweets/${endpoint}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: user.token, tweetId: props._id }),
+        })
+            .then(response => response.json())
+            .then(data => { 
+                props.updateHomePage(); // Appel de la fonction de mise à jour dans le composant HomePage
+            })
+            .catch(error => {
+                console.error('Error during fetch:', error);
+            })
+    };
+
 
     return (
         <div className={styles.tweetContainer}>
 
-
             <div className={styles.tweetTextContainer}>
                 <div className={styles.profilContainer}>
-                    <img src='./profil.png' className={styles.profilePic} />
+                    <img src={props.user && props.user.profilPhoto} className={styles.profilePic} />
                     <span className={styles.tweetTop}>@{props.user.username} </span>
                 </div>
 
@@ -64,11 +64,13 @@ export default function Tweet(props) {
                 <div className={styles.infos}>
 
                     <div className={styles.iconeLike}>
-                        <FontAwesomeIcon icon={faHeart} style={styleHeart} onClick={() => {
-                            setLike(!like)
-                        }} />
-                        {like? '0' : '1'}
-                    </div>
+                        <FontAwesomeIcon icon={faHeart} style={styleHeart} onClick={() => handleLike()} />
+                        {props.likes.length}
+                        <span>
+                            {props.likes.length < 3
+                                ? props.likes.map((nom) => `@${nom}`).join(', ')
+                                : `${props.likes.slice(0, 2).map((nom) => `@${nom}`).join(', ')} ...`}
+                        </span>                    </div>
 
                     <div className={styles.iconeDroite}>
 
