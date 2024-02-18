@@ -5,7 +5,9 @@ function topHashtags(data) {
     // Création d'un objet avec chaque hashtag unique et le nombre d'occurrences
     const hashtagCounts = allHashtags.reduce((accumulator, hashtag) => {
 
-        const existingHashtag = accumulator.find(item => item.hashtag === hashtag);
+        const existingHashtag = accumulator.find(item =>
+            item.hashtag.localeCompare(hashtag, 'fr', { sensitivity: 'accent' }) === 0
+        );
 
         if (existingHashtag) {
             existingHashtag.nbOccurence++;
@@ -21,5 +23,4 @@ function topHashtags(data) {
     return hashtagCounts;
 }
 
-
-module.exports = { topHashtags } 
+module.exports = { topHashtags };
