@@ -25,7 +25,7 @@ function Home() {
 
 
   const handleRegister = (firstname, username, password) => {
-    fetch('http://localhost:3000/users/signup', {
+    fetch('https://hackatweet-backend-nu.vercel.app/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ firstname, username, password }),
@@ -42,7 +42,7 @@ function Home() {
 
 	const handleConnection = (username, password, firstname) => {
 
-		fetch('http://localhost:3000/users/signin', {
+    fetch('https://hackatweet-backend-nu.vercel.app/users/signin', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username, password}),

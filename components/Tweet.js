@@ -32,7 +32,7 @@ export default function Tweet(props) {
 
         const endpoint = isLikedByUser ? 'dislike' : 'like';
 
-        fetch(`http://localhost:3000/tweets/${endpoint}`, {
+        fetch(`hhttps://hackatweet-backend-nu.vercel.app/tweets/${endpoint}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token: user.token, tweetId: props._id }),
@@ -89,10 +89,6 @@ export default function Tweet(props) {
         </div>
     );
 }
-
-
-
-
 
 
 const ColoredHashtags = ({ text }) => {
