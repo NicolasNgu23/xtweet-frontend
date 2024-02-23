@@ -58,7 +58,7 @@ export default function HomePageComponent() {
 
     // Récupération de tous les tweets
     useEffect(() => {
-        fetch(`https://hackatweet-backend-nu.vercel.app/tweets/allTweet`)
+        fetch(`https://xtweet-backend.vercel.app/tweets/allTweet`)
             .then(response => response.json())
             .then(tweets => {
                 // Filter tweets based on the search query
@@ -76,7 +76,7 @@ export default function HomePageComponent() {
     // Envoi d'un nouveau tweet
     const sendTweet = (content) => {
         if (content.trim() !== "" && content.length <= 280) {
-            fetch('https://hackatweet-backend-nu.vercel.app/tweets/tweet', {
+            fetch('https://xtweet-backend.vercel.app/tweets/tweet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ token: user.token, content }),
@@ -93,7 +93,7 @@ export default function HomePageComponent() {
 
     // Suppression du tweet
     const deleteTweet = (tweet) => {
-        fetch(`https://hackatweet-backend-nu.vercel.app/tweets/${tweet._id}`, { method: 'DELETE' })
+        fetch(`https://xtweet-backend.vercel.app/tweets/${tweet._id}`, { method: 'DELETE' })
             .then(response => response.json())
             .then((tweet) => {
                 console.log('Tweet deleted', tweet);

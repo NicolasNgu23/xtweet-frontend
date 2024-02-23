@@ -9,7 +9,7 @@ const { changeDate } = require('../modules/changeDate');
 
 export default function Tweet(props) {
 
-    const [like, setLike] = useState(props.isLiked); 
+    const [like, setLike] = useState(props.isLiked);
 
     const handleClick = () => {
         props.deleteOne(props);
@@ -32,13 +32,13 @@ export default function Tweet(props) {
 
         const endpoint = isLikedByUser ? 'dislike' : 'like';
 
-        fetch(`https://hackatweet-backend-nu.vercel.app/tweets/${endpoint}`, {
+        fetch(`https://xtweet-backend.vercel.app/tweets/${endpoint}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token: user.token, tweetId: props._id }),
         })
             .then(response => response.json())
-            .then(data => { 
+            .then(data => {
                 props.updateHomePage(); // Appel de la fonction de mise à jour dans le composant HomePage
             })
             .catch(error => {
@@ -85,7 +85,7 @@ export default function Tweet(props) {
 
             </div>
 
-           
+
         </div>
     );
 }
