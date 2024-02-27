@@ -65,7 +65,7 @@ function Home() {
         {signinClick && <Signin handleConnection={handleConnection} handleCloseForm={handleCloseForm} />}
 
         <div className={styles.deco}>
-          <div className={styles.welcomeText}>
+          <div className={styles.welcomeText}  style={{ color:'#0000CD' }}>
             Welcome to :
             <TypeAnimation
               sequence={[
@@ -80,7 +80,7 @@ function Home() {
               ]}
               wrapper="span"
               speed={1}
-              style={{ fontSize: '150px', display: 'flex' }}
+              style={{ fontSize: '150px', display: 'flex', color:'#0000CD' }}
               repeat={Infinity}
               className={styles.movingText}
             />
@@ -90,7 +90,7 @@ function Home() {
 
         <div className={styles.content}>
             <div className={styles.title}>
-            <h1>Come join us 😁</h1>
+            <h1>The good place</h1>
             </div>
 
             <h2>Join Hackatweet today.</h2>

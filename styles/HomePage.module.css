@@ -1,8 +1,5 @@
 .page {
     display: flex;
-    margin: 10px;
-    border-radius: 16px;
-
 }
 
 .containerLeft {
@@ -17,14 +14,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #151F2B;
-    border-top-left-radius: 16px;
-    height: 28vh;
+    background-color: black;
+    height: 30vh;
     width: 20vw;
+    border-bottom:  solid #0000CD 1px;
 }
 
 .logoContainer {
-    Display: flex;
+    display: flex;
     justify-content: flex-start;
 }
 
@@ -43,7 +40,7 @@
     width: 100px;
     margin-top: 8px;
     border-radius: 100%;
-    border: 3px solid white;
+    border: 1px solid #0000CD;
 }
 
 
@@ -54,13 +51,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 98vh;
-    width: 78vw;
-    background-color: #d8d2c7;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(240, 240, 240);
     padding: 10px;
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-
+    border-left: solid 0.5px #0000CD;
 }
 
 .writeTweet {
@@ -84,8 +79,8 @@
     font-size: 1.5rem;
     width: 30vw;
     border: none;
-    background-color: transparent;
-    border: solid 2px white;
+     background-color: rgba(0, 0, 0, 0.7);
+    border: solid 2px #0000CD;
     color: white;
     padding-left: 16px;
     margin-right: 8px;
@@ -102,16 +97,16 @@
 
 .tweetButton {
     width: 40px;
-        height: 80px;
-    border: 2px solid;
+    height: 80px;
     border-radius: 16px;
     font-size: 1rem;
-    border: solid 2px white;
-    color: #151F2B;
+    border: none;
+    color: #0000CD;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .tweetButton:hover {
-    background-color: #CCC5B7;
+    background-color: rgb(0, 0, 0);
     color: white;
     cursor: pointer;
 }
@@ -124,15 +119,18 @@
     scroll-behavior: smooth;
     overflow-y: scroll;
     margin-top: 16px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
 }
 
 .pageButtons {
-    display: flex;  
+    display: flex;
     font-size: 2em;
     gap: 16px;
     cursor: pointer;
-    color: white ; 
-        font-weight: 800;
+    color: rgba(0, 0, 0,0.8) ;
+    font-weight: 800;
     }
 
     .nameContainer {
@@ -147,15 +145,14 @@
 .hashtagsContainer {
     display: flex;
     height: 70vh;
-        width: 20vw;
-        background-color: aqua;
+    width: 20vw;
+    background-color: black;
     flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        scroll-behavior: smooth;
-        overflow-y: scroll;
+    align-items: flex-start;
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
     align-items: center;
-        border-bottom-left-radius: 16px;
 }
 
 .trendsTitle {
@@ -169,9 +166,9 @@
 .logoutbtn{
   padding: 0.7rem 4rem;
   border-radius: 6rem;
-  background-color: #151F2B;
-  color: white;
-  border: solid 1px white;
+  background-color: white;
+  color: black;
+  border: solid 1px #0000CD;
   font-weight: bold;
-cursor: pointer;
+  cursor: pointer;
 }

@@ -4,10 +4,10 @@
     flex-direction: row;
     color: white;
     padding-top: 10px;
-        padding-bottom: 8px;
-    border-top: 0.8px solid white;
-    padding-bottom: 30px; 
-    
+    padding-bottom: 8px;
+    border-top: 0.8px solid #0000CD;
+    padding-bottom: 30px;
+
 }
 
 .tweetTextContainer {
@@ -45,7 +45,7 @@
 
 .infos {
     display: flex;
-    width: 100%; 
+    width: 100%;
     margin-top: 16px;
     align-items: center;
    justify-content: space-between;
@@ -70,5 +70,5 @@
 .iconeDroite {
     display: flex;
     align-items: center;
-    gap: 16px ; 
+    gap: 16px ;
 }
