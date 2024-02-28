@@ -93,7 +93,9 @@ export default function HomePageComponent() {
 
     // Suppression du tweet
     const deleteTweet = (tweet) => {
-        fetch(`https://xtweet-backend.vercel.app/tweets/${tweet._id}`, { method: 'DELETE' })
+        fetch(`https://xtweet-backend.vercel.app/tweets/${tweet._id}`, {
+            method: 'DELETE'
+            })
             .then(response => response.json())
             .then((tweet) => {
                 console.log('Tweet deleted', tweet);
