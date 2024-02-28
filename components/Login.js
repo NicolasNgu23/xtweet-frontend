@@ -80,7 +80,7 @@ function Home() {
               ]}
               wrapper="span"
               speed={1}
-              style={{ fontSize: '15rem', display: 'flex', color:'#0000CD' }}
+              style={{ fontSize: '150px', display: 'flex', color:'#0000CD' }}
               repeat={Infinity}
               className={styles.movingText}
             />
